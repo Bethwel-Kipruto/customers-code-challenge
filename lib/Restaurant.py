@@ -36,7 +36,7 @@ class Restaurant(Base):
         return list(unique_customers)
     
     def average_star_rating(self):
-        rating_sum = session.query(func.sum(Review.rating)).filter(Review.restaurant_id == self.id).scalar()
+        rating_sum= session.query(func.sum(Review.rating)).filter(Review.restaurant_id == self.id).scalar()
         rating_count = session.query(func.count(Review.rating)).filter(Review.restaurant_id == self.id).scalar()
         if rating_count:
             return rating_sum / rating_count
